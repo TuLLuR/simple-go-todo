@@ -13,7 +13,7 @@ func main() {
 	migrate(db)
 	e := echo.New()
 
-	e.File("/", "public/index.html")
+	e.Static("/", "public")
 
 	e.GET("/tasks", handlers.GetTasks(db))
 	e.POST("/tasks", handlers.PostTask(db))

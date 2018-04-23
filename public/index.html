@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="UTF-8">
     <title>TODO</title>
@@ -9,20 +10,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/0.7.0/vue-resource.min.js"></script>
-    <style>
-        .container {
-            /*display: inline-block;*/
-            /*position: fixed;*/
-            /*top: 0;*/
-            /*bottom: 0;*/
-            /*left: 0;*/
-            /*right: 0;*/
-            /*width: 600px;*/
-            /*height: 300px;*/
-            /*margin: auto;*/
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <div class="container">
         <div class="row">
@@ -47,49 +37,7 @@
             </div>
         </div>
     </div>
-<script>
-    new Vue ({
-        el: 'body',
-
-        data: {
-            tasks: [],
-            newTask: {}
-        },
-
-        created: function() {
-            this.$http.get('/tasks').then(function (response) {
-                this.tasks = response.data.items ? response.data.items : []
-            })
-        },
-
-        methods: {
-            createTask: function() {
-                if(!$.trim(this.newTask.name)) {
-                    this.newTask = {};
-                    return ;
-                }
-
-                this.$http.post('/tasks', this.newTask).success(function(response){
-                    this.newTask.id = response.created;
-                    this.tasks.push(this.newTask);
-                    console.log("Task created!");
-                    console.log(this.newTask);
-                    this.newTask = {}
-                }).error(function(error){
-                    console.log(error);
-                });
-
-            },
-            deleteTask: function(index) {
-                this.$http.delete('/tasks/' + this.tasks[index].id).success(function(response){
-                    this.tasks.splice(index, 1);
-                    console.log("Task deleted!");
-                }).error(function(error){
-                    console.log(error);
-                });
-            }
-        }
-    });
-</script>
+    <script src="js/script.js"></script>
 </body>
+
 </html>

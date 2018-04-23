@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex-shrink: 0;
+    flex-grow: 1;
+}
